@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.4</version>
+		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -38,7 +38,7 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -67,6 +67,20 @@
 			<version>3.5.12</version>
 		</dependency>
 
+		<!--
+		  ⚠️ MyBatis Plus 3.5.12 架构变更说明（新手必读！）：
+		  3.5.9 版本起，MyBatis Plus 将依赖 SQL 解析的插件功能
+		  （TenantLineInnerInterceptor、PaginationInnerInterceptor 等）
+		  从 extension 核心包中拆分到独立的 jsqlparser 模块。
+		  必须显式引入，否则编译报错。
+		  "4.9" 是集成的 jsqlparser 版本号，"3.5.12" 是 mybatis-plus 的版本。
+		-->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-jsqlparser-4.9</artifactId>
+			<version>3.5.12</version>
+		</dependency>
+
 		<!-- fastjson2：阿里出品的高性能 JSON 解析库 -->
 		<dependency>
 			<groupId>com.alibaba.fastjson2</groupId>
@@ -76,7 +90,7 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
