@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: saas-crm
+
+  # ========================
+  # 数据源配置（连接 MySQL）
+  # ========================
+  datasource:
+    url: jdbc:mysql://localhost:3306/saas_crm?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# ========================
+# MyBatis Plus 配置
+# ========================
+mybatis-plus:
+  configuration:
+    # 开启驼峰命名转换：数据库 user_name -> Java userName（自动映射）
+    map-underscore-to-camel-case: true
+    # 打印 SQL 日志（开发阶段必开！可以看到实际执行的 SQL 语句）
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 全局主键策略：ASSIGN_ID = 雪花算法（生成全局唯一 Long 型 ID）
+      id-type: ASSIGN_ID
+      # 软删除配置（标记字段名）
+      logic-delete-field: deleted
+      logic-delete-value: 1 # 1 = 已删除
+      logic-not-delete-value: 0 # 0 = 未删除
+
+# ========================
+# 服务器配置
+# ========================
+server:
+  port: 8080
